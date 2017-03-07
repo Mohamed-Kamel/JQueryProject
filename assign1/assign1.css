@@ -1,0 +1,114 @@
+
+@font-face {
+    font-family: ubuntu;
+    src: url(../Ubuntu-R.ttf);
+}
+
+
+body{
+	background-image: url("../2.jpg");
+	background-size: 100% auto;
+	font-family: ubuntu;
+}
+
+
+.text{
+	font-family: ubuntu;
+ 	width: 78%;
+	height: 70%;
+	height: 40px;
+	border-radius: 3px;
+    border: 1px solid #3f3f3f;
+	font-size: 100%;
+	padding-left: 5px;
+	margin-right: 0px;
+}
+
+
+.button{
+	font-family: ubuntu;
+	width: 20%;
+	height: 45px;
+	background-color: #515050;
+    color: #fff;
+    font-size: 100%;
+    font-weight: bold;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #515050;
+}
+
+#form{
+	font-family: ubuntu;
+    margin: auto;
+    width: 55%;
+    height: 100%;
+    border: 3px solid #3f3f3f;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fefefe;
+}
+
+#list{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+.list{
+	cursor: pointer;
+	position: relative;
+	padding: 12px 8px 12px 40px;
+	background: #eee;
+	font-size: 18px;
+	transition: 0.2s;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.list:nth-child(even) {
+    background: #e88b8b;
+}
+
+.list:hover {
+    background: #aaa;
+}
+
+
+#header{
+	background-color: #fff;
+	width: 80px;
+	height: 100px;
+	margin: auto;
+    width: 55%;
+    height: 100%;
+    border: 3px solid #3f3f3f;
+    border-radius: 5px;
+    padding: 5px 10px; 
+}
+
+#myImage{
+	width: 80px;
+	height: 100px;
+	margin-right: 5px;
+	clear: both;
+	border: 3px solid #3f3f3f;
+	vertical-align: middle;
+}
+
+#name{
+	float: right;
+	margin-right: 7%;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    margin-top: 5px;
+    display: block;
+    border-radius: 3px;
+}
+
