@@ -18,11 +18,14 @@ $(document).ready(function (){
 
 	//use ajax to get json file
 	$('#showJson').on("click", function(){
+		$("#list").empty();
+		$("#error").hide();
+		$("#clear").hide();
 		$(this).hide();
 		$("#input").hide();
 		$("#addText").hide();
 		$("#toDo").show();
-        //start ajax request
+        // start ajax request
         $.ajax({
             url: "students.json",
             //force to handle it as text
@@ -39,12 +42,15 @@ $(document).ready(function (){
     });
 
 	$("#toDo").on("click", function(){
-		$(this).hide();
 		$("#list").empty();
+		$("#error").hide();
+		$("#clear").hide();
+		$(this).hide();
 		$("#input").show();
 		$("#addText").show();
 		$("#showJson").show();
 	});
+
 });
 
 //an event function to create a list and add the input text to it
@@ -74,7 +80,7 @@ function clearAll(){
 	if(request == true){
 		$("#list").empty();
 	}
-	$("#clear").css("display", "none");
+	$("#clear").hide();
 }
 
 
