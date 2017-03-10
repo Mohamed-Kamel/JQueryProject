@@ -144,8 +144,8 @@ body{
 }
 
 #showJson:hover{
-	background-color: #c05296;
-	border-color: #c05296;
+	background-color: #4286f4;
+	border-color: #4286f4;
 	color: #fff;
 	cursor: pointer;
 }
@@ -170,8 +170,8 @@ body{
 }
 
 #toDo:hover{
-	background-color: #c05296;
-	border-color: #c05296;
+	background-color: #4286f4;
+	border-color: #4286f4;
 	color: #fff;
 	cursor: pointer;
 }

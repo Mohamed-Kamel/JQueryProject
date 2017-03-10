@@ -7,63 +7,13 @@ $(document).ready(function (){
 	//clear all button action
 	$("#clear").on("click", clearAll);
 
-	//remove one element by delegation
+
 	$("#list").on("click", "li", function(){		
-		$("#error").hide();
+		$("#error").css("display", "none");
 		var request = confirm("Are you sure that you want to delete this element ?!!");
 		if(request == true){
 			$(this).remove();
 		}
-	});
-
-	//use ajax to get json file
-	$('#showJson').on("click", function(){
-		var list = $("#list");
-		list.empty();
-		$("#error").hide();
-		$("#clear").hide();
-		$(this).hide();
-		$("#input").hide();
-		$("#addText").hide();
-		$("#toDo").fadeIn(200);
-		var createList = "";
-        // start ajax request
-        $.ajax({
-            url: "students.json",
-            //force to handle it as text
-            dataType: "text",
-            success: function(data) {
-                var json = $.parseJSON(data);
-                $.each(json, function(index, value){
-                	$("<li></li>",{
-                		class : "list",
-                		text  : value.name
-                	}).appendTo(list);
-                	
-                	$("<li></li>",{
-                		class : "list",
-                		text  : value.age
-                	}).appendTo(list);
-
-                	$("<li></li>",{
-                		class : "list",
-                		text  : value.grade
-                	}).appendTo(list);
-               });
-            },
-            error: function(data){
-            	alert("error" + data.error);
-            }
-        }); 
-    });
-
-	$("#toDo").on("click", function(){
-		$("#list").empty();
-		$("#error").hide();
-		$("#clear").hide();
-		$(this).fadeOut(200);
-		$("#myForm").children().show();
-		$("#showJson").fadeIn(200);
 	});
 
 });
@@ -71,7 +21,7 @@ $(document).ready(function (){
 //an event function to create a list and add the input text to it
 function addItem(event){
 
-	$("#error").hide();
+	$("#error").css("display", "none");
 
 	//prevent the redirection
 	event.preventDefault();
@@ -90,12 +40,12 @@ function addItem(event){
 
 //an event function to clear the entire list
 function clearAll(){
-	$("#error").hide();
+	$("#error").css("display", "none");
 	var request = confirm("Are you sure that you want to clear all elements ?!!");
 	if(request == true){
 		$("#list").empty();
 	}
-	$("#clear").hide();
+	$("#clear").css("display", "none");
 }
 
 
@@ -109,18 +59,15 @@ function AddText(text, element, parent){
 	
 	//function to insert the input text to the list
 	this.insert = function(){
-		var clear = $("#clear");
 
 		if(this.list.length <= 0){
 
 			this.addElement();
-			clear.show();
+			$("#clear").css("display", "block");
 
 		}else if (this.checkText(this.text)) {
-			
 			this.addElement();
-			clear.show();
-
+			$("#clear").css("display", "block");
 		}
 	};
 
@@ -146,26 +93,45 @@ function AddText(text, element, parent){
 				this.showError("Sorry, You can't enter the same string twice");
 				return false;
 			}
+
+			// console.log(result);
+			
+			/*var result = $(this.list).filter(function(index, el) {
+    			return el.textContent === text
+  			});*/
+
+			/* using grep
+			var res = $.grep($(this.list), function(el, index) {
+    			return el.textContent === text
+  			});
+			*/
+
+			/*
+			var res = $(this.list).is(function(index, el) {
+    			i = index;
+    			return el.textContent === text
+  			});
+			*/
+			//if the input found 
+  			// if(result.length>0){
+  			// 	this.showError("Sorry, You can't enter the same string twice");
+  			// 	return false;
+  			// }
+					
+  			//if the input is unique and not empty
 			return true;
 
 		}
 	};
 
-
+// id="+this.text+" class=\"list\"
 	//create list item and add it to the list
 	this.addElement = function(){
-		$('<li></li>', {
-			class: "list",
-			text : this.text
-		}).appendTo(this.parent);
+		this.parent.append('<li class="list">'+this.text+'</li>');
 	};
-
 
 	//show an error message
 	this.showError = function(msg){
-		$("#error").text(msg).addClass("alert").show();
+		$("#error").text(msg).addClass("alert").css("display", "block");
 	};
-
 }
-
-
